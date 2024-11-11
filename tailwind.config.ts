@@ -9,6 +9,10 @@ export default {
     "./app/**/*.{js,ts,jsx,tsx,mdx}",
   ],
   theme: {
+    fontFamily: {
+      "noto-sans": "var(--font-noto-sans)",
+      "great-vibes": "var(--font-great-vibes)",
+    },
     extend: {
       colors: {
         background: "hsl(var(--background))",
