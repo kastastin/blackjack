@@ -1,9 +1,23 @@
 import Link from "next/link";
 import Image from "next/image";
+import {
+  SignedIn,
+  SignedOut,
+  UserButton,
+  SignInButton,
+} from "@clerk/nextjs";
 
 export default function Home() {
   return (
     <div className="grid min-h-dvh grid-rows-[20px_1fr_20px] items-center justify-items-center gap-16 p-8 pb-20 text-white sm:p-20">
+      <SignedIn>
+        <UserButton />
+      </SignedIn>
+      <SignedOut>
+        <SignInButton mode="modal">
+          <button className="underline underline-offset-2">Sign in</button>
+        </SignInButton>
+      </SignedOut>
       <main className="row-start-2 flex flex-col items-center gap-8 sm:items-start">
         <Image
           className="dark:invert"
@@ -27,7 +41,7 @@ export default function Home() {
         <div className="flex flex-col items-center gap-4 sm:flex-row">
           <Link
             href="/game"
-            className="flex h-10 items-center justify-center gap-2 rounded-full border border-solid border-transparent bg-foreground px-4 text-sm text-background transition-colors hover:bg-[#252c34] dark:hover:bg-[#ccc] sm:h-12 sm:px-5 sm:text-base"
+            className="flex h-10 items-center justify-center gap-2 rounded-full border border-solid border-transparent bg-foreground px-4 text-sm text-background transition-colors hover:bg-[#334048] dark:hover:bg-[#ccc] sm:h-12 sm:px-5 sm:text-base"
           >
             <Image
               className="dark:invert"
@@ -39,7 +53,7 @@ export default function Home() {
             Play
           </Link>
           <a
-            className="flex h-10 items-center justify-center rounded-full border border-solid border-white/[.08] px-4 text-sm transition-colors hover:border-transparent hover:bg-[#252c34] dark:border-black/[.145] dark:hover:bg-[#1a1a1a] sm:h-12 sm:min-w-44 sm:px-5 sm:text-base"
+            className="flex h-10 items-center justify-center rounded-full border border-solid border-white/[.08] px-4 text-sm transition-colors hover:border-transparent hover:bg-[#334048] dark:border-black/[.145] dark:hover:bg-[#1a1a1a] sm:h-12 sm:min-w-44 sm:px-5 sm:text-base"
             href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
             target="_blank"
             rel="noopener noreferrer"

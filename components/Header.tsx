@@ -1,13 +1,14 @@
+import Link from "next/link";
 import { TiArrowBackOutline, TiInfoOutline } from "react-icons/ti";
 
 export default function Header({ height }: { height?: string }) {
   return (
     <header
-      className={`flex items-center justify-between bg-[#334048] px-4 text-3xl text-white ${height}`}
+      className={`container flex items-center justify-between bg-[#334048] text-3xl text-white ${height}`}
     >
-      <button className="cursor-pointer hover:text-white/[.8]">
+      <Link href="/" className="cursor-pointer hover:text-white/[.8]">
         <TiArrowBackOutline />
-      </button>
+      </Link>
       <h1 className="mt-[5px] cursor-default font-great-vibes font-semibold tracking-wide">
         Blackjack
       </h1>

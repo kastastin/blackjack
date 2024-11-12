@@ -70,3 +70,9 @@ body {
     @apply bg-background text-foreground;
   }
 }
+
+@layer components {
+  .container {
+    @apply px-4 sm:max-w-[400px] sm:mx-auto;
+  }
+}

@@ -16,7 +16,9 @@ import { Input } from "@/components/ui/input";
 
 const formSchema = z.object({
   betAmount: z
-    .number()
+    .number({
+      required_error: "Bet amount has to be between 5 and 100",
+    })
     .min(5, { message: "Minimum bet is 5" })
     .max(100, { message: "Maximum bet is 100" }),
 });
@@ -25,7 +27,7 @@ export default function BetForm() {
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
-      betAmount: 0,
+      betAmount: undefined,
     },
   });
 
@@ -87,7 +89,17 @@ export default function BetForm() {
           render={({ field }) => (
             <FormItem>
               <FormControl>
-                <Input placeholder="5 - 100" {...field} />
+                <Input
+                  type="number"
+                  placeholder="5 - 100"
+                  {...field}
+                  value={field.value !== undefined ? field.value : ""}
+                  onChange={(e) =>
+                    field.onChange(
+                      e.target.value ? parseInt(e.target.value, 10) : undefined
+                    )
+                  }
+                />
               </FormControl>
               <FormMessage />
             </FormItem>

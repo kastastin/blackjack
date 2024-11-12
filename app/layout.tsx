@@ -1,5 +1,6 @@
 import React from "react";
 import localFont from "next/font/local";
+import { ClerkProvider } from "@clerk/nextjs";
 import { Noto_Sans as NotoSans } from "next/font/google";
 
 import type { Metadata } from "next";
@@ -25,12 +26,14 @@ export default function RootLayout({
   children,
 }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html lang="en">
-      <body
-        className={`${notoSans.variable} ${greatVibes.variable} bg-[#334048] antialiased`}
-      >
-        {children}
-      </body>
-    </html>
+    <ClerkProvider signInForceRedirectUrl="/" signUpForceRedirectUrl="/">
+      <html lang="en">
+        <body
+          className={`${notoSans.variable} ${greatVibes.variable} bg-[#252c34] antialiased`}
+        >
+          {children}
+        </body>
+      </html>
+    </ClerkProvider>
   );
 }
